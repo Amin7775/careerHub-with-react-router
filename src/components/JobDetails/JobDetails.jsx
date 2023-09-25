@@ -2,6 +2,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { saveStoredJobApplication } from "../../utility/localStorage";
 
 const JobDetails = () => {
     const jobs=useLoaderData(); //get fetched data in jobs from json
@@ -13,6 +14,7 @@ const JobDetails = () => {
     console.log(job)
 
     const handleToast = () =>{
+        saveStoredJobApplication(id);
         toast('Applied Successfully')
     }
     return (
