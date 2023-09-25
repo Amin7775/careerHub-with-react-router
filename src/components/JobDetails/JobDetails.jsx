@@ -7,14 +7,14 @@ import { saveStoredJobApplication } from "../../utility/localStorage";
 const JobDetails = () => {
     const jobs=useLoaderData(); //get fetched data in jobs from json
     const {id} = useParams(); // get id by using params
-    console.log(jobs,id);
+    // console.log(jobs,id);
     const intId= parseInt(id);
     const job = jobs.find(Job => Job.id === intId) //getting the selected id and its data
     const { logo,job_title,company_name,remote_or_onsite, location,job_type,salary}=job;
-    console.log(job)
+    // console.log(job)
 
     const handleToast = () =>{
-        saveStoredJobApplication(id);
+        saveStoredJobApplication(intId);
         toast('Applied Successfully')
     }
     return (
