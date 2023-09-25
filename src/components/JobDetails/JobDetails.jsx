@@ -1,5 +1,8 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const JobDetails = () => {
     const jobs=useLoaderData(); //get fetched data in jobs from json
     const {id} = useParams(); // get id by using params
@@ -8,6 +11,10 @@ const JobDetails = () => {
     const job = jobs.find(Job => Job.id === intId) //getting the selected id and its data
     const { logo,job_title,company_name,remote_or_onsite, location,job_type,salary}=job;
     console.log(job)
+
+    const handleToast = () =>{
+        toast('Applied Successfully')
+    }
     return (
         <div>
             <h1>Job Details of :  {job_title}</h1>
@@ -23,10 +30,11 @@ const JobDetails = () => {
                 </div>
                 <div className="border grid-cols-1 flex flex-col p-2">
                     <h2 className="text-2xl text-center flex-grow">Side Things</h2>
-                    <button className="btn btn-primary w-full my-2">Apply Job</button>
+                    <button onClick={handleToast} className="btn btn-primary w-full my-2">Apply Job</button>
                 </div>
             </div>
             <Link to={"/"}>GO BACK</Link>
+            <ToastContainer/>
         </div>
     );
 };
